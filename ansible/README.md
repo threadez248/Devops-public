@@ -1,7 +1,5 @@
-<img width="1036" alt="Screen Shot 2021-06-10 at 5 56 03 PM" src="https://user-images.githubusercontent.com/81865907/121604295-3e689800-ca18-11eb-9a11-e9fcfd5b5f47.png">
-<img width="777" alt="Screen Shot 2021-06-10 at 5 56 19 PM" src="https://user-images.githubusercontent.com/81865907/121604298-3f012e80-ca18-11eb-951d-735304b5f056.png">
-<img width="1088" alt="Screen Shot 2021-06-10 at 5 57 47 PM" src="https://user-images.githubusercontent.com/81865907/121604299-3f012e80-ca18-11eb-93d9-9eb049973810.png">
-<img width="1131" alt="Screen Shot 2021-06-10 at 5 58 18 PM" src="https://user-images.githubusercontent.com/81865907/121604300-3f99c500-ca18-11eb-9ec3-780e0e7e3998.png">
+
+
 ## Devops-public
 
 ### Ansible installation on MAC
@@ -52,6 +50,8 @@ Testing Installation:
 
 ##NOTE: Not coveredd for Windows since we usually not recomment Ansible to those machines
 
+<img width="1036" alt="Screen Shot 2021-06-10 at 5 56 03 PM" src="https://user-images.githubusercontent.com/81865907/121604295-3e689800-ca18-11eb-9a11-e9fcfd5b5f47.png">
+
 
 USAGE:
 
@@ -70,5 +70,10 @@ Step 2: There will be hosts file. Place internal Private IP of remote host into 
 Step 3: Replace ansible.cfg if you want to. Its optional, we created simple config file for reference
 Step 4: ansible all -m ping -v ( This lets you know if hosts are connected correctly)
 Step 5: ansible-playbook -i hosts httpd.yml ( Please get httpd.yml sample playbook file from repo)
+
+
+<img width="777" alt="Screen Shot 2021-06-10 at 5 56 19 PM" src="https://user-images.githubusercontent.com/81865907/121604298-3f012e80-ca18-11eb-951d-735304b5f056.png">
+<img width="1088" alt="Screen Shot 2021-06-10 at 5 57 47 PM" src="https://user-images.githubusercontent.com/81865907/121604299-3f012e80-ca18-11eb-93d9-9eb049973810.png">
+<img width="1131" alt="Screen Shot 2021-06-10 at 5 58 18 PM" src="https://user-images.githubusercontent.com/81865907/121604300-3f99c500-ca18-11eb-9ec3-780e0e7e3998.png">
 
 
