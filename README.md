@@ -27,3 +27,13 @@ Testing Installation:
 
 ### terraform -v and terraform -h
 
+
+Usage:
+terraform init
+terraform plan
+terraform apply
+
+We included count now. You can spin multiple instances by changing count variable in variables.tf
+
+Also, instances now created will be loaded with Ansible by default
+

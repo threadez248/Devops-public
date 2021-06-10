@@ -88,4 +88,5 @@ Establish Password less authentication
 
 
 
-
+NOTE:  
+Instances now created will be loaded with Ansible by default when you use Terraform script in this repo. 
