@@ -42,7 +42,9 @@ ansible –version
 
 Output:
 **ansible 2.6.3 config file = /etc/ansible/ansible.cfg**
+
 configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules’]
+
 ansible python module location = /usr/lib/python2.7/site-packages/ansible executable location = /usr/bin/ansible python version = 2.7.5
 
 To enable the Ansible Engine repository for RHEL 8, run the following command:
@@ -75,9 +77,13 @@ USAGE:
 Run Terraform Script in this repository to create instances and install Ansible following above Steps
 
 Establish Password less authentication 
+
         ssh-keygen -t rsa
+	
         copy created public file to remote server on which Ansible tasks need to run into ~/.ssh/authorized_keys
+	
         Once done: Test with: ssh <private_ip> and should be logged in.
+	
         Private IP since AWS internal instances will use Private IPs to communicate.
 
 ##Ansible run Steps:
