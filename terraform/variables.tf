@@ -4,9 +4,18 @@
 variable "aws_region" {
   description = "AWS region"
   type        = string
-  default     = "eu-central-1"
+  default     = "us-east-1"
 }
- 
+
+variable "instance_count" {
+  default = "2"
+} 
+
+variable "instance_tags" {
+  type = list
+  default = ["Ansible-Main", "Node-1"]
+}
+
 variable "aws_region_az" {
   description = "AWS region availability zone"
   type        = string
@@ -19,7 +28,7 @@ variable "aws_region_az" {
 variable "instance_ami" {
   description = "ID of the AMI used"
   type        = string
-  default     = "ami-0d5eff06f840b45e9"
+  default     = "ami-0aeeebd8d2ab47354"
 }
  
 variable "instance_type" {
