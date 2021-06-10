@@ -48,14 +48,14 @@ Testing Installation:
 
 ### ansible --version
 
-##NOTE: Not coveredd for Windows since we usually not recomment Ansible to those machines
+##NOTE: Not covered for Windows since we usually not recomment Ansible to those machines
 
 <img width="1036" alt="Screen Shot 2021-06-10 at 5 56 03 PM" src="https://user-images.githubusercontent.com/81865907/121604295-3e689800-ca18-11eb-9a11-e9fcfd5b5f47.png">
 
 
 USAGE:
 
-Run Terraform Script to create instances and install Ansible following above Steps
+Run Terraform Script in this repository to create instances and install Ansible following above Steps
 
 Establish Password less authentication 
         ssh-keygen -t rsa
@@ -66,11 +66,19 @@ Establish Password less authentication
 ##Ansible run Steps:
 
 ##Step 1: cd /etc/ansible ---Default Location
-##Step 2: There will be hosts file. Place internal Private IP of remote host into it.
+
+
+##Step 2: There will be hosts file located at /etc/ansible. Place internal Private IP of remote host into it.
+
+
 ##Step 3: Replace ansible.cfg if you want to. Its optional, we created simple config file for reference
+
+
 ##Step 4: ansible all -m ping -v ( This lets you know if hosts are connected correctly)
 
+
 <img width="1088" alt="Screen Shot 2021-06-10 at 5 57 47 PM" src="https://user-images.githubusercontent.com/81865907/121604299-3f012e80-ca18-11eb-93d9-9eb049973810.png">
+
 
 ##Step 5: ansible-playbook -i hosts httpd.yml ( Please get httpd.yml sample playbook file from repo)
 
