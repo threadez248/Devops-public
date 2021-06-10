@@ -62,6 +62,7 @@ resource "aws_route_table_association" "public-rt-subnet-assoc"{
 
 ##Instance creation
 resource "aws_instance" "instance" {
+  count         = var.instance_count
   ami                         = var.instance_ami
   availability_zone           = "${var.aws_region}${var.aws_region_az}"
   instance_type               = var.instance_type
@@ -76,9 +77,9 @@ resource "aws_instance" "instance" {
     volume_size           = var.root_device_size
     volume_type           = var.root_device_type
   }
- 
+  user_data =  "${file("install_ansible.sh")}"        
   tags = {
-    "Owner"               = var.owner
-    "Name"                = "${var.owner}-instance"
+     Name  = element(var.instance_tags, count.index)
+     Owner = var.owner
   }
 }
