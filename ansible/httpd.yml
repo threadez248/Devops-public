@@ -1,0 +1,37 @@
+---
+## Play-1: Webserver related tasks
+
+##Ad-hoc command
+##ansible -i hosts all -m yum -a 'name=httpd state=present'
+
+- name: Create apache dirs and usernames
+  hosts: all
+  become: yes
+  become_user: root
+  vars:
+     username: itmunk
+     home_dir: /home/itmunk
+     usergroup: itmunk
+     app_name: httpd
+     
+     
+  tasks:
+    - name: Create itmunk group
+      group: 
+        name: "{usergroup}"
+        state: present
+        
+    - name: Create username itmunk
+      user:
+        name: "{username}"
+        group: "{usergroup}"
+        shell: /bin/bash
+        home: "{{home_dir}}"
+        
+    - name: Install app
+      yum: 
+        name: "{{app_name}}"
+        state: installed
+      register: installation
+      
+    - debug: var=installation  
