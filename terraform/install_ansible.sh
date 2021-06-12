@@ -6,3 +6,5 @@ yum update -y
 
 yum install ansible -y
 
+yum install git -y
+
