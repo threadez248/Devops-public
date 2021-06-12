@@ -33,5 +33,10 @@
         name: "{{app_name}}"
         state: installed
       register: installation
+    
+    - name: Run app
+      systemd: 
+        name: "{{app_name}}"
+        state: started
       
     - debug: var=installation  
