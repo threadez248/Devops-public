@@ -18,13 +18,13 @@
   tasks:
     - name: Create itmunk group
       group: 
-        name: "{usergroup}"
+        name: "{{usergroup}}"
         state: present
         
     - name: Create username itmunk
       user:
-        name: "{username}"
-        group: "{usergroup}"
+        name: "{{username}}"
+        group: "{{usergroup}}"
         shell: /bin/bash
         home: "{{home_dir}}"
         
