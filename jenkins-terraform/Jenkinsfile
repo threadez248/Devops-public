@@ -1,13 +1,15 @@
 //Declarative Style//
 
-def reargs = "-var="aws_region=${params.REGION}""
-def amargs = "-var="instance_ami=${params.AMI}""
-def kargs = "-var="key_pair=${params.KEY}"" 
+
 
 pipeline {
     agent any
  
-
+    environment {
+       TF_VAR_aws_region="${params.REGION}"
+       TF_VAR_instance_ami="${params.AMI}"
+       TF_VAR_key="${params.KEY}"
+    }
     options {
         ansiColor('xterm')
         timestamps()
@@ -32,7 +34,7 @@ pipeline {
           steps {
               dir('jenkins-terraform') {
               script{
-                sh "terraform plan $reargs $amargs $kargs"
+                sh "terraform plan "
               } //Script   
              } //dir
            }  // steps
@@ -43,7 +45,7 @@ pipeline {
               dir('jenkins-terraform') {
               def USER_INPUT = input message: 'Please confirm to apply', ok:'Next', parameters: [string(name: 'Apply', defaultvalue: 'apply', description: 'Click to Apply')]
               env.APPLY = USER_INPUT
-              sh "terraform ${env.APPLY} $reargs $amargs $kargs --auto-approve"
+              sh "terraform ${env.APPLY} --auto-approve"
               } //dir
             } //Script
           }  //steps
