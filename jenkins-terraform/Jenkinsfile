@@ -1,6 +1,6 @@
 //Declarative Style//
 
-def args = -var="aws_region=${params.REGION}" -var="instance_ami=${params.AMI}" -var="key_pair=${params.KEY}"
+def args = "-var="aws_region=${params.REGION}" -var="instance_ami=${params.AMI}" -var="key_pair=${params.KEY}""
 
 pipeline {
     agent any
