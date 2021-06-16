@@ -1,5 +1,5 @@
 //Declarative Style//
-def args = "-var="aws_region=${params.REGION}" -var="instance_ami=${params.AMI}" -var="key_pair=${params.KEY}""
+
 
 pipeline {
     agent any
@@ -28,7 +28,10 @@ pipeline {
         stage("Terraform plan") {
           steps {
               dir('jenkins-terraform') {
-              sh "terraform plan $args"
+              script{
+                def args = "-var="aws_region=${params.REGION}" -var="instance_ami=${params.AMI}" -var="key_pair=${params.KEY}""
+                sh "terraform plan $args"
+              } //Script   
              } //dir
            }  // steps
         } //Stage  
@@ -36,6 +39,7 @@ pipeline {
           steps {
               script {
               dir('jenkins-terraform') {
+              def args = "-var="aws_region=${params.REGION}" -var="instance_ami=${params.AMI}" -var="key_pair=${params.KEY}""    
               def USER_INPUT = input message: 'Please confirm to apply', ok:'Next', parameters: [string(name: 'Apply', defaultvalue: 'apply', description: 'Click to Apply')]
               env.APPLY = USER_INPUT
               sh "terraform ${env.APPLY} $args --auto-approve"
