@@ -1,8 +1,8 @@
 //Declarative Style//
 
-def reargs = "-var="aws_region=params.REGION""
-def amargs = "-var="instance_ami=params.AMI""
-def kargs = "-var="key_pair=params.KEY"" 
+def reargs = "-var="aws_region=${params.REGION}""
+def amargs = "-var="instance_ami=${params.AMI}""
+def kargs = "-var="key_pair=${params.KEY}"" 
 
 pipeline {
     agent any
