@@ -1,0 +1,34 @@
+//Declarative Style//
+
+pipeline {
+    agent any
+ 
+    stages {
+        stage("Terraform init") {
+          steps {
+              dir('jenkins-terraform') {
+              sh 'ls -lrt'    
+              sh "terraform init"
+             } //dir
+           }  // steps
+        } //Stage   
+        stage("Terraform plan") {
+          steps {
+              dir('jenkins-terraform') {
+              sh "terraform plan"
+             } //dir
+           }  // steps
+        } //Stage  
+        stage("Terraform apply") {
+          steps {
+              script {
+              dir('jenkins-terraform') {
+              def USER_INPUT = input message: 'Please confirm to apply', ok:'Next', parameters: [string(name: 'Apply', defaultvalue: 'apply', description: 'Click to Apply')]
+              env.APPLY = USER_INPUT
+              sh "terraform ${env.APPLY} --auto-approve"
+              } //dir
+            } //Script
+          }  //steps
+        } //Stage 
+    } //All stages     
+} //Pipeline
