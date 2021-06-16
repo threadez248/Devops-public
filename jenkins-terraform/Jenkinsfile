@@ -30,7 +30,7 @@ pipeline {
           steps {
               dir('jenkins-terraform') {
               script{
-                sh "terraform plan"
+                sh "terraform plan $args"
               } //Script   
              } //dir
            }  // steps
@@ -41,7 +41,7 @@ pipeline {
               dir('jenkins-terraform') {
               def USER_INPUT = input message: 'Please confirm to apply', ok:'Next', parameters: [string(name: 'Apply', defaultvalue: 'apply', description: 'Click to Apply')]
               env.APPLY = USER_INPUT
-              sh "terraform ${env.APPLY} -var="aws_region=params.REGION" -var="instance_ami=params.AMI" -var="key_pair=params.KEY" --auto-approve"
+              sh "terraform ${env.APPLY} $args --auto-approve"
               } //dir
             } //Script
           }  //steps
