@@ -1,6 +1,4 @@
 //Declarative Style//
-#!/usr/bin/env groovy
-
 def args = "-var="aws_region=${params.REGION}" -var="instance_ami=${params.AMI}" -var="key_pair=${params.KEY}""
 
 pipeline {
