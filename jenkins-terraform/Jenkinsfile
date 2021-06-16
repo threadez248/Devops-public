@@ -3,6 +3,11 @@
 pipeline {
     agent any
  
+
+    options {
+        ansiColor('xterm')
+        timestamps()
+    }
     stages {
         stage("Terraform init") {
           steps {
