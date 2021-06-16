@@ -1,5 +1,7 @@
 //Declarative Style//
 
+def args = "-var="aws_region=${params.REGION}" -var="instance_ami=${params.AMI}" -var="key_pair=${params.KEY}""
+
 pipeline {
     agent any
  
@@ -8,7 +10,13 @@ pipeline {
         ansiColor('xterm')
         timestamps()
     }
-    
+
+    parameters {
+        string(name: 'REGION', description: 'Region to deploy')
+        string(name: 'AMI', description: 'AMI ID to deploy')
+        string(name: 'KEY', description: 'KEYPAIR to deploy')
+    }
+
     stages {
         stage("Terraform init") {
           steps {
@@ -21,7 +29,7 @@ pipeline {
         stage("Terraform plan") {
           steps {
               dir('jenkins-terraform') {
-              sh "terraform plan"
+              sh "terraform plan $args"
              } //dir
            }  // steps
         } //Stage  
@@ -31,7 +39,7 @@ pipeline {
               dir('jenkins-terraform') {
               def USER_INPUT = input message: 'Please confirm to apply', ok:'Next', parameters: [string(name: 'Apply', defaultvalue: 'apply', description: 'Click to Apply')]
               env.APPLY = USER_INPUT
-              sh "terraform ${env.APPLY} --auto-approve"
+              sh "terraform ${env.APPLY} $args --auto-approve"
               } //dir
             } //Script
           }  //steps
