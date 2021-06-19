@@ -1,0 +1,26 @@
+---
+- name: Create itmunk group
+  group: 
+    name: "{{usergroup}}"
+    state: present
+        
+- name: Create username itmunk
+  user:
+    name: "{{username}}"
+    group: "{{usergroup}}"
+    shell: /bin/bash
+    home: "{{home_dir}}"
+  loop: "{{ user_names }}"  
+        
+- name: Install app
+  yum: 
+    name: "{{app_name}}"
+    state: installed
+  register: installation
+    
+- name: Run app
+  systemd: 
+    name: "{{app_name}}"
+    state: started
+  
+- debug: var=installation  

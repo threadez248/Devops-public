@@ -1,0 +1,9 @@
+---
+user_names:
+  - itmunk
+  - itmunk-dev
+  - itnmunk-dev1
+  - itmunk-dev2
+home_dir: /home/itmunk
+usergroup: itmunk
+app_name: httpd
