@@ -10,7 +10,11 @@
     group: "{{usergroup}}"
     shell: /bin/bash
     home: "{{home_dir}}"
-  loop: "{{ user_names }}"  
+  loop: "{{ user_names }}" 
+ register: usernames
+  
+- name: Print user names
+  debug: var=usernames
         
 - name: Install app
   yum: 
