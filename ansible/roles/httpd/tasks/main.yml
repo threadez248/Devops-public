@@ -6,7 +6,7 @@
         
 - name: Create username itmunk
   user:
-    name: "{{username}}"
+    name: "{{item}}"
     group: "{{usergroup}}"
     shell: /bin/bash
     home: "{{home_dir}}"
