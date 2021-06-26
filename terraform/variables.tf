@@ -8,7 +8,7 @@ variable "aws_region" {
 }
 
 variable "instance_count" {
-  default = "1"
+  default = "2"
 } 
 
 variable "instance_tags" {
@@ -40,7 +40,7 @@ variable "instance_type" {
 variable "key_pair" {
   description = "SSH Key pair used to connect"
   type        = string
-  default     = "threadez"
+  default     = "itmunkdev"
 }
  
 variable "root_device_type" {
